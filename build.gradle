@@ -54,3 +54,7 @@ tasks.named("bootBuildImage") {
         host = "/Users/ambi/.local/share/containers/podman/machine/podman.sock"
     }
 }
+
+bootRun {
+    systemProperty 'spring.profiles.active', 'testdata'
+}
