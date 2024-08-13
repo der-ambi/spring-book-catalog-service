@@ -1,9 +1,14 @@
 package de.bashburg.springbook.catalogservice.domain
 
-interface BookRepository {
-    fun findAll(): Iterable<Book>
+import org.springframework.data.jdbc.repository.query.Modifying
+import org.springframework.data.jdbc.repository.query.Query
+import org.springframework.data.repository.CrudRepository
+
+interface BookRepository : CrudRepository<Book, Long> {
     fun findByIsbn(isbn: String): Book?
     fun existsByIsbn(isbn: String): Boolean
-    fun save(book: Book): Book
+
+    @Modifying
+    @Query("delete from book where isbn = :isbn")
     fun deleteByIsbn(isbn: String)
 }
