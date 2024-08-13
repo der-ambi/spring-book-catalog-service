@@ -5,26 +5,17 @@ import org.assertj.core.api.Assertions.assertThat
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
-import org.springframework.boot.testcontainers.service.connection.ServiceConnection
 import org.springframework.context.annotation.Import
 import org.springframework.data.jdbc.core.JdbcAggregateTemplate
-import org.testcontainers.containers.PostgreSQLContainer
-import org.testcontainers.junit.jupiter.Container
-import org.testcontainers.junit.jupiter.Testcontainers
+import org.springframework.test.context.ActiveProfiles
 import kotlin.test.Test
 
 
-@Testcontainers
 @DataJdbcTest
 @Import(DataConfig::class)
+@ActiveProfiles("integration")
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class BookRepositoryJdbcTests {
-
-    companion object {
-        @Container
-        @ServiceConnection
-        val pg = PostgreSQLContainer("postgres:16")
-    }
 
     @Autowired
     private lateinit var bookRepository: BookRepository
