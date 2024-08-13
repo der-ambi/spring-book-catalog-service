@@ -1,4 +1,8 @@
 package de.bashburg.springbook.catalogservice.config
 
-class DataConfig {
-}
+import org.springframework.context.annotation.Configuration
+import org.springframework.data.jdbc.repository.config.EnableJdbcAuditing
+
+@Configuration
+@EnableJdbcAuditing
+class DataConfig

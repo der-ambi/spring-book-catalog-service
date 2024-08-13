@@ -4,8 +4,11 @@ import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.NotNull
 import jakarta.validation.constraints.Pattern
 import jakarta.validation.constraints.Positive
+import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.Id
+import org.springframework.data.annotation.LastModifiedDate
 import org.springframework.data.annotation.Version
+import java.time.Instant
 
 data class Book(
     @Id
@@ -13,6 +16,12 @@ data class Book(
 
     @Version
     val version: Int = 0,
+
+    @CreatedDate
+    val createdDate: Instant?,
+
+    @LastModifiedDate
+    val lastModifiedDate: Instant?,
 
     @field:NotBlank(message = "The book ISBN must be defined.")
     @field:Pattern(
@@ -32,6 +41,15 @@ data class Book(
 ) {
     companion object {
         fun of(isbn: String, title: String, author: String, price: Double): Book =
-            Book(null, 0, isbn, title, author, price)
+            Book(
+                id = null,
+                version = 0,
+                createdDate = null,
+                lastModifiedDate = null,
+                isbn = isbn,
+                title = title,
+                author = author,
+                price = price
+            )
     }
 }
