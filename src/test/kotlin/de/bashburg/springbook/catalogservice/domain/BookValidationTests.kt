@@ -12,13 +12,13 @@ class BookValidationTests {
 
     @Test
     fun whenAllFieldsCorrectThenValidationSucceeds() {
-        val book = Book("1234567890", "Test Title", "Test Author", 9.90)
+        val book = Book.of("1234567890", "Test Title", "Test Author", 9.90)
         Assertions.assertThat(validator.validate(book)).isEmpty()
     }
 
     @Test
     fun whenIsbnIsDefinedButIncorrectThenValidationFails() {
-        val book = Book("a234567890", "Test Title", "Test Author", 9.90)
+        val book = Book.of("a234567890", "Test Title", "Test Author", 9.90)
         val violations = validator.validate(book)
         assertThat(violations).hasSize(1)
         assertThat(violations.iterator().next().message).isEqualTo("The ISBN format must be valid.")

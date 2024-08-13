@@ -13,8 +13,8 @@ class BookDataLoader(val bookRepository: BookRepository) {
 
     @EventListener(ApplicationReadyEvent::class)
     fun loadBookTestData() {
-        val book1 = Book("1234567891", "Northern Lights", "Lyra Silverstar", 9.9)
-        val book2 = Book("1234567892", "Polar Journey", "Iorek Polarson", 12.9)
+        val book1 = Book.of("1234567891", "Northern Lights", "Lyra Silverstar", 9.9)
+        val book2 = Book.of("1234567892", "Polar Journey", "Iorek Polarson", 12.9)
 
         bookRepository.save(book1)
         bookRepository.save(book2)
