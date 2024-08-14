@@ -80,6 +80,14 @@ tasks.named("bootBuildImage") {
 bootBuildImage {
     imageName = "${project.name}"
     environment = ["BP_JVM_VERSION": "21.*"]
+
+    docker {
+        publishRegistry {
+            username = "der-ambi"
+            password = project.findProperty("registryToken")
+            url = "ghcr.io"
+        }
+    }
 }
 
 bootRun {
