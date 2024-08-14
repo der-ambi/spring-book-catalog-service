@@ -70,16 +70,19 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-tasks.named("bootBuildImage") {
-    builder = "dashaun/builder:tiny"
-    docker {
-        host = "/Users/ambi/.local/share/containers/podman/machine/podman.sock"
+if (System.getProperty("os.name").toLowerCase().contains("mac")) {
+    tasks.named("bootBuildImage") {
+        docker {
+            host = "/Users/ambi/.local/share/containers/podman/machine/podman.sock"
+        }
     }
 }
 
 bootBuildImage {
     imageName = "${project.name}"
     environment = ["BP_JVM_VERSION": "21.*"]
+
+    builder = "dashaun/builder:tiny"
 
     docker {
         publishRegistry {
