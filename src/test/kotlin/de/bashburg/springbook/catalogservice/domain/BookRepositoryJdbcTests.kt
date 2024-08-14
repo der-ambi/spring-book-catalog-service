@@ -4,7 +4,6 @@ import de.bashburg.springbook.catalogservice.config.DataConfig
 import org.assertj.core.api.Assertions.assertThat
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
 import org.springframework.context.annotation.Import
 import org.springframework.data.jdbc.core.JdbcAggregateTemplate
 import org.springframework.test.context.ActiveProfiles
@@ -14,7 +13,6 @@ import kotlin.test.Test
 @DataJdbcTest
 @Import(DataConfig::class)
 @ActiveProfiles("integration")
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class BookRepositoryJdbcTests {
 
     @Autowired
