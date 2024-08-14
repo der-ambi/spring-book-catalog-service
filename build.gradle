@@ -83,9 +83,9 @@ bootBuildImage {
 
     docker {
         publishRegistry {
-            username = "der-ambi"
+            username = project.findProperty("registryUsername")
             password = project.findProperty("registryToken")
-            url = "ghcr.io"
+            url = project.findProperty("registryUrl")
         }
     }
 }
