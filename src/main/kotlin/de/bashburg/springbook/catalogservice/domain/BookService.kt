@@ -26,6 +26,7 @@ class BookService(val bookRepository: BookRepository) {
                 isbn = it.isbn,
                 title = book.title,
                 author = book.author,
+                publisher = book.publisher,
                 price = book.price,
                 lastModifiedDate = book.lastModifiedDate,
                 createdDate = book.createdDate

@@ -35,12 +35,14 @@ data class Book(
     @field:NotBlank(message = "The book author must be defined.")
     val author: String,
 
+    val publisher: String?,
+
     @field:NotNull(message = "The book price must be defined.")
     @field:Positive(message = "The book price must be greater than zero.")
     val price: Double
 ) {
     companion object {
-        fun of(isbn: String, title: String, author: String, price: Double): Book =
+        fun of(isbn: String, title: String, author: String, publisher: String?, price: Double): Book =
             Book(
                 id = null,
                 version = 0,
@@ -49,6 +51,7 @@ data class Book(
                 isbn = isbn,
                 title = title,
                 author = author,
+                publisher = publisher,
                 price = price
             )
     }

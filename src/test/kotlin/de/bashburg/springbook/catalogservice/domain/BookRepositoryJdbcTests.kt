@@ -26,7 +26,7 @@ class BookRepositoryJdbcTests {
     @Test
     fun `find book by isbn when existing`() {
         val isbn = "1234561237"
-        val book = Book.of(isbn, "Title", "Author", 9.90)
+        val book = Book.of(isbn, "Title", "Author", "Polarsophia", 9.90)
         jdbcAggregateTemplate.insert(book)
 
         val actualBook = bookRepository.findByIsbn("1234561237")

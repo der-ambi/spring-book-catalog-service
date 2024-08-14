@@ -25,7 +25,7 @@ class CatalogServiceApplicationTests {
 
     @Test
     fun `when post request then book created`() {
-        val expectedBook = Book.of("1231231231231", "Title", "Author", 9.90)
+        val expectedBook = Book.of("1231231231231", "Title", "Author", "Polarsophia", 9.90)
 
         webTestClient
             .post()
