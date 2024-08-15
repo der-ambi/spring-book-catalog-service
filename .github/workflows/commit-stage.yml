@@ -37,6 +37,13 @@ jobs:
       - name: Build, unit tests and integration tests
         run: |
           ./gradlew build
+      - name: Validate Kubernetes manifests
+        uses: stefanprodan/kube-tools@v1
+        with:
+          kubeconform: latest
+          kubectl: latest
+          command:
+            kubeconform -strict -verbose k8s
   package:
     name: Package and Publish
     if: ${{ github.ref == 'refs/heads/master' }}
