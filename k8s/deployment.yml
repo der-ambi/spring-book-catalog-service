@@ -31,3 +31,9 @@ spec:
               value: jdbc:postgresql://polar-postgres:5432/polardb_catalog
             - name: SPRING_PROFILES_ACTIVE
               value: "testdata"
+            - name: SPRING_CLOUD_CONFIG_URI
+              value: "http://config-service:80"
+            - name: SPRING_CLOUD_CONFIG_FAIL_FAST
+              value: "true"
+            - name: SPRING_CLOUD_CONFIG_RETRY_MAX_ATTEMPTS
+              value: "20"
