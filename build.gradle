@@ -28,6 +28,7 @@ configurations {
 ext {
     set('springCloudVersion', "2023.0.3")
     set('testcontainersVersion', '1.20.1')
+    set('testcontainersKeycloakVersion', '3.4.0')
 }
 
 dependencies {
@@ -50,6 +51,8 @@ dependencies {
     testImplementation 'org.testcontainers:junit-jupiter'
     testImplementation 'org.springframework.boot:spring-boot-testcontainers'
     testImplementation 'org.testcontainers:postgresql'
+    testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation "com.github.dasniko:testcontainers-keycloak:${testcontainersKeycloakVersion}"
     runtimeOnly 'org.postgresql:postgresql'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     annotationProcessor('org.springframework.boot:spring-boot-configuration-processor')
