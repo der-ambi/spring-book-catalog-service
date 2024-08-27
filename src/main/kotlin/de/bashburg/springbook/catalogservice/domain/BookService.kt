@@ -29,7 +29,9 @@ class BookService(val bookRepository: BookRepository) {
                 publisher = book.publisher,
                 price = book.price,
                 lastModifiedDate = book.lastModifiedDate,
-                createdDate = book.createdDate
+                lastModifiedBy = book.lastModifiedBy,
+                createdDate = book.createdDate,
+                createdBy = book.createdBy
             )
         } ?: book
 

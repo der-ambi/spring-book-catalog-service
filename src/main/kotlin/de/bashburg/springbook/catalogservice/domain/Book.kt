@@ -4,10 +4,7 @@ import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.NotNull
 import jakarta.validation.constraints.Pattern
 import jakarta.validation.constraints.Positive
-import org.springframework.data.annotation.CreatedDate
-import org.springframework.data.annotation.Id
-import org.springframework.data.annotation.LastModifiedDate
-import org.springframework.data.annotation.Version
+import org.springframework.data.annotation.*
 import java.time.Instant
 
 data class Book(
@@ -20,8 +17,14 @@ data class Book(
     @CreatedDate
     val createdDate: Instant?,
 
+    @CreatedBy
+    val createdBy: String?,
+
     @LastModifiedDate
     val lastModifiedDate: Instant?,
+
+    @LastModifiedBy
+    val lastModifiedBy: String?,
 
     @field:NotBlank(message = "The book ISBN must be defined.")
     @field:Pattern(
@@ -47,7 +50,9 @@ data class Book(
                 id = null,
                 version = 0,
                 createdDate = null,
+                createdBy = null,
                 lastModifiedDate = null,
+                lastModifiedBy = null,
                 isbn = isbn,
                 title = title,
                 author = author,
