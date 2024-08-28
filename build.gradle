@@ -29,6 +29,7 @@ ext {
     set('springCloudVersion', "2023.0.3")
     set('testcontainersVersion', '1.20.1')
     set('testcontainersKeycloakVersion', '3.4.0')
+    set('otelVersion', '1.33.6') //FIXME update to 2.x
 }
 
 dependencies {
@@ -46,6 +47,7 @@ dependencies {
     implementation 'org.flywaydb:flyway-database-postgresql'
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
     implementation 'io.github.oshai:kotlin-logging-jvm:5.1.4'
+    implementation "io.opentelemetry.javaagent:opentelemetry-javaagent:${otelVersion}"
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.jetbrains.kotlin:kotlin-test-junit5'
     testImplementation 'io.projectreactor:reactor-test'
@@ -69,6 +71,7 @@ dependencyManagement {
 kotlin {
     compilerOptions {
         freeCompilerArgs.addAll '-Xjsr305=strict'
+        jvmToolchain(17)
     }
 }
 
@@ -86,7 +89,7 @@ if (System.getProperty("os.name").toLowerCase().contains("mac")) {
 
 bootBuildImage {
     imageName = "${project.name}"
-    environment = ["BP_JVM_VERSION": "21.*"]
+    environment = ["BP_JVM_VERSION": "17.*"]
 
     builder = "dashaun/builder:tiny"
 
