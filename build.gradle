@@ -55,6 +55,7 @@ dependencies {
     testImplementation 'org.springframework.security:spring-security-test'
     testImplementation "com.github.dasniko:testcontainers-keycloak:${testcontainersKeycloakVersion}"
     runtimeOnly 'org.postgresql:postgresql'
+    runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     annotationProcessor('org.springframework.boot:spring-boot-configuration-processor')
 }
