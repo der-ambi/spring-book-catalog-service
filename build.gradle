@@ -105,3 +105,7 @@ bootBuildImage {
 bootRun {
     systemProperty 'spring.profiles.active', 'testdata'
 }
+
+springBoot {
+    buildInfo()
+}
